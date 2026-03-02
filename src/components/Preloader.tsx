@@ -63,13 +63,14 @@ export default function Preloader() {
                                     animate={{ strokeDashoffset: [400, 0, -400] }}
                                     transition={{ duration: 2.5, repeat: Infinity, ease: "linear" }}
                                 />
-                                {/* Scanning Glow Effect */}
-                                <motion.div
-                                    animate={{ left: ['0%', '100%'] }}
-                                    transition={{ duration: 2.5, repeat: Infinity, ease: "linear" }}
-                                    className="absolute top-0 bottom-0 w-1/4 bg-gradient-to-r from-transparent via-blue-400/20 to-transparent z-10"
-                                />
                             </svg>
+
+                            {/* Scanning Glow Effect (Moved outside SVG to fix Hydration Error) */}
+                            <motion.div
+                                animate={{ left: ['0%', '100%'] }}
+                                transition={{ duration: 2.5, repeat: Infinity, ease: "linear" }}
+                                className="absolute top-0 bottom-0 w-1/4 bg-gradient-to-r from-transparent via-blue-400/20 to-transparent z-10"
+                            />
                         </div>
 
                         {/* Name Reveal with Academic Flair */}
@@ -91,10 +92,6 @@ export default function Preloader() {
                                     />
                                 </span>
                             </motion.h2>
-
-                            <p className="text-blue-600 dark:text-blue-400 font-medium tracking-[0.4em] text-[10px] md:text-xs">
-                                THE INTERSECTION OF MEDICINE & AI
-                            </p>
                         </motion.div>
 
                         <div className="mt-16 flex justify-center space-x-2">
