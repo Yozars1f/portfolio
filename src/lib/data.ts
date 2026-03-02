@@ -1,7 +1,7 @@
 import { LucideIcon, Brain, Globe, Laptop, HeartPulse, Microscope, Users } from 'lucide-react';
 
 export const personalInfo = {
-    name: "Youssef Ahmed",
+    name: "Youssef Ahmad",
     title: "Doctor of Medicine (MD) (Class of 2025) | Founder of MedResearchCollab",
     headline: "Bridging Clinical Rigor and Research Efficiency",
 
