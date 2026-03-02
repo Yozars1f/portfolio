@@ -34,76 +34,86 @@ export default function Preloader() {
               */}
                     {/* Image removed at user request */}
 
-                    {/* Text and Pulse Container */}
+                    {/* Stethoscope Echo Container */}
                     <motion.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0, scale: 0.95 }}
                         transition={{ duration: 0.6 }}
-                        className="text-center relative px-6"
+                        className="text-center relative px-6 flex flex-col items-center"
                     >
-                        {/* Innovative Medical Pulse Animation */}
-                        <div className="relative h-24 w-64 mx-auto mb-12 flex items-center justify-center overflow-hidden">
-                            {/* Static Background Grid (Subtle) */}
-                            <div className="absolute inset-0 grid grid-cols-12 gap-1 opacity-10">
-                                {[...Array(24)].map((_, i) => (
-                                    <div key={i} className="border-r border-blue-400 h-full" />
-                                ))}
-                            </div>
-
-                            {/* Moving Pulse Line */}
-                            <svg viewBox="0 0 200 60" className="w-full h-full text-blue-500 drop-shadow-[0_0_8px_rgba(59,130,246,0.5)]">
-                                <motion.path
-                                    d="M 0 30 L 70 30 L 80 10 L 90 50 L 100 30 L 120 30 L 125 25 L 130 35 L 135 30 L 200 30"
-                                    fill="transparent"
-                                    stroke="currentColor"
-                                    strokeWidth="2"
-                                    strokeDasharray="400"
-                                    initial={{ strokeDashoffset: 400 }}
-                                    animate={{ strokeDashoffset: [400, 0, -400] }}
-                                    transition={{ duration: 2.5, repeat: Infinity, ease: "linear" }}
-                                />
-                            </svg>
-
-                            {/* Scanning Glow Effect (Moved outside SVG to fix Hydration Error) */}
-                            <motion.div
-                                animate={{ left: ['0%', '100%'] }}
-                                transition={{ duration: 2.5, repeat: Infinity, ease: "linear" }}
-                                className="absolute top-0 bottom-0 w-1/4 bg-gradient-to-r from-transparent via-blue-400/20 to-transparent z-10"
-                            />
-                        </div>
-
-                        {/* Name Reveal with Academic Flair */}
-                        <motion.div
-                            initial={{ opacity: 0, y: 10 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.5, duration: 1 }}
-                        >
-                            <motion.h2
-                                className="text-4xl font-serif font-bold text-slate-800 dark:text-slate-200 tracking-[0.15em] uppercase mb-4"
-                            >
-                                <span className="inline-block relative">
-                                    Youssef Ahmad, MD
-                                    <motion.span
-                                        initial={{ width: '100%' }}
-                                        animate={{ width: '0%' }}
-                                        transition={{ duration: 1.5, delay: 0.8, ease: "easeInOut" }}
-                                        className="absolute inset-0 bg-white dark:bg-slate-950 border-l-2 border-blue-500"
-                                    />
-                                </span>
-                            </motion.h2>
-                        </motion.div>
-
-                        <div className="mt-16 flex justify-center space-x-2">
-                            {[0, 1, 2].map((i) => (
+                        {/* Stethoscope Head SVG */}
+                        <div className="relative mb-12 flex items-center justify-center">
+                            {/* Expanding Echo Waves */}
+                            {[0, 1].map((i) => (
                                 <motion.div
                                     key={i}
-                                    animate={{ scale: [1, 1.5, 1], opacity: [0.3, 1, 0.3] }}
-                                    transition={{ duration: 1.5, repeat: Infinity, delay: i * 0.2 }}
-                                    className="w-1.5 h-1.5 rounded-full bg-blue-500"
+                                    initial={{ scale: 0.8, opacity: 0.5 }}
+                                    animate={{ scale: 2.5, opacity: 0 }}
+                                    transition={{
+                                        duration: 3,
+                                        repeat: Infinity,
+                                        delay: i * 1.5,
+                                        ease: "easeOut"
+                                    }}
+                                    className="absolute inset-0 border border-blue-400/30 rounded-full w-20 h-20"
                                 />
                             ))}
+
+                            {/* Stethoscope Head Icon */}
+                            <motion.div
+                                initial={{ scale: 0.9 }}
+                                animate={{ scale: [0.9, 1, 0.9] }}
+                                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                                className="relative z-10 text-blue-600 dark:text-blue-500"
+                            >
+                                <svg
+                                    width="80"
+                                    height="80"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    strokeWidth="1.2"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                >
+                                    {/* Diaphragm */}
+                                    <circle cx="12" cy="12" r="8" />
+                                    <circle cx="12" cy="12" r="3" />
+                                    {/* Tubing (Minimalist) */}
+                                    <path d="M12 4V2" />
+                                    <path d="M10 2h4" />
+                                    <path d="M12 20v2" />
+                                    <path d="M10 22h4" />
+                                </svg>
+                            </motion.div>
                         </div>
+
+                        {/* Name Reveal - Emerging from the Echo */}
+                        <motion.div
+                            initial={{ opacity: 0, letterSpacing: "0.5em" }}
+                            animate={{ opacity: 1, letterSpacing: "0.15em" }}
+                            transition={{ delay: 0.3, duration: 1.5, ease: "easeOut" }}
+                        >
+                            <h2 className="text-4xl font-serif font-bold text-slate-800 dark:text-slate-200 uppercase mb-2">
+                                Youssef Ahmad, MD
+                            </h2>
+                            <motion.div
+                                initial={{ width: 0 }}
+                                animate={{ width: "100%" }}
+                                transition={{ delay: 1, duration: 1.2 }}
+                                className="h-px bg-gradient-to-r from-transparent via-blue-500 to-transparent mx-auto mt-4"
+                            />
+                        </motion.div>
+
+                        <motion.p
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 0.6 }}
+                            transition={{ delay: 2 }}
+                            className="mt-6 text-[10px] tracking-[0.3em] font-medium text-slate-500 dark:text-slate-400 uppercase"
+                        >
+                            Clinical Excellence & Research
+                        </motion.p>
                     </motion.div>
                 </motion.div>
             )}
