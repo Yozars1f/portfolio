@@ -89,7 +89,7 @@ export default function Navbar() {
 
                         {/* Tooltip */}
                         <div className="absolute top-full left-0 mt-2 w-48 bg-slate-900 text-white text-xs px-3 py-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
-                            Welcome! I'm Youssef Ahmed.
+                            Welcome! I'm Youssef Ahmad.
                         </div>
                     </motion.div>
                 )}
@@ -104,7 +104,7 @@ export default function Navbar() {
                     "text-lg font-serif font-bold transition-colors",
                     isScrolled ? "text-slate-900 dark:text-white" : "text-slate-900 dark:text-white"
                 )}>
-                    Youssef Ahmed
+                    Youssef Ahmad
                 </span>
             </Link>
 

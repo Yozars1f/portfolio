@@ -34,58 +34,78 @@ export default function Preloader() {
               */}
                     {/* Image removed at user request */}
 
-                    {/* Text and Spinner Container */}
+                    {/* Text and Pulse Container */}
                     <motion.div
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, scale: 0.9 }}
-                        transition={{ duration: 0.5 }}
-                        className="mt-8 text-center"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0, scale: 0.95 }}
+                        transition={{ duration: 0.6 }}
+                        className="text-center relative px-6"
                     >
-                        <motion.div
-                            initial={{ scale: 0.8, opacity: 0 }}
-                            animate={{ scale: [1, 1.1, 1], opacity: 1 }}
-                            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                            className="flex justify-center text-blue-600 mb-6"
-                        >
-                            <div className="relative">
-                                <div className="absolute inset-0 bg-blue-400/20 rounded-full blur-xl animate-pulse" />
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    width="64"
-                                    height="64"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    strokeWidth="1.5"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    className="relative z-10"
-                                >
-                                    <path d="M4.8 2.8C3.5 1.5 1.4 1.5 0.1 2.8c-1.3 1.3-1.3 3.4 0 4.7l.1.1 4.7 4.7c1.3 1.3 3.4 1.3 4.7 0 1.3-1.3 1.3-3.4 0-4.7l-4.8-4.8z" />
-                                    <path d="M12 11V7a5 5 0 0 0-5-5" />
-                                    <path d="M22 13a4 4 0 0 1-4-4V7" />
-                                    <path d="M18 10a2 2 0 1 0 0-4 2 2 0 0 0 0 4z" />
-                                    <path d="M7 21h10" />
-                                    <path d="M12 21v-4a5 5 0 0 0-5-5H5" />
-                                    <path d="M12 17a4 4 0 0 1-4 4" />
-                                    <path d="M12 17a4 4 0 0 0 4 4" />
-                                </svg>
+                        {/* Innovative Medical Pulse Animation */}
+                        <div className="relative h-24 w-64 mx-auto mb-12 flex items-center justify-center overflow-hidden">
+                            {/* Static Background Grid (Subtle) */}
+                            <div className="absolute inset-0 grid grid-cols-12 gap-1 opacity-10">
+                                {[...Array(24)].map((_, i) => (
+                                    <div key={i} className="border-r border-blue-400 h-full" />
+                                ))}
                             </div>
+
+                            {/* Moving Pulse Line */}
+                            <svg viewBox="0 0 200 60" className="w-full h-full text-blue-500 drop-shadow-[0_0_8px_rgba(59,130,246,0.5)]">
+                                <motion.path
+                                    d="M 0 30 L 70 30 L 80 10 L 90 50 L 100 30 L 120 30 L 125 25 L 130 35 L 135 30 L 200 30"
+                                    fill="transparent"
+                                    stroke="currentColor"
+                                    strokeWidth="2"
+                                    strokeDasharray="400"
+                                    initial={{ strokeDashoffset: 400 }}
+                                    animate={{ strokeDashoffset: [400, 0, -400] }}
+                                    transition={{ duration: 2.5, repeat: Infinity, ease: "linear" }}
+                                />
+                                {/* Scanning Glow Effect */}
+                                <motion.div
+                                    animate={{ left: ['0%', '100%'] }}
+                                    transition={{ duration: 2.5, repeat: Infinity, ease: "linear" }}
+                                    className="absolute top-0 bottom-0 w-1/4 bg-gradient-to-r from-transparent via-blue-400/20 to-transparent z-10"
+                                />
+                            </svg>
+                        </div>
+
+                        {/* Name Reveal with Academic Flair */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.5, duration: 1 }}
+                        >
+                            <motion.h2
+                                className="text-4xl font-serif font-bold text-slate-800 dark:text-slate-200 tracking-[0.15em] uppercase mb-4"
+                            >
+                                <span className="inline-block relative">
+                                    Youssef Ahmad, MD
+                                    <motion.span
+                                        initial={{ width: '100%' }}
+                                        animate={{ width: '0%' }}
+                                        transition={{ duration: 1.5, delay: 0.8, ease: "easeInOut" }}
+                                        className="absolute inset-0 bg-white dark:bg-slate-950 border-l-2 border-blue-500"
+                                    />
+                                </span>
+                            </motion.h2>
+
+                            <p className="text-blue-600 dark:text-blue-400 font-medium tracking-[0.4em] text-[10px] md:text-xs">
+                                THE INTERSECTION OF MEDICINE & AI
+                            </p>
                         </motion.div>
 
-                        <motion.h2
-                            className="text-3xl font-serif font-bold text-slate-800 dark:text-slate-200 tracking-widest uppercase mb-2"
-                        >
-                            Youssef Ahmed, MD
-                        </motion.h2>
-
-                        <p className="text-blue-600 dark:text-blue-400 font-medium tracking-[0.3em] text-xs mb-8">
-                            CLINICAL AI & RESEARCH
-                        </p>
-
-                        <div className="flex justify-center text-slate-400">
-                            <Loader2 className="animate-spin" size={20} />
+                        <div className="mt-16 flex justify-center space-x-2">
+                            {[0, 1, 2].map((i) => (
+                                <motion.div
+                                    key={i}
+                                    animate={{ scale: [1, 1.5, 1], opacity: [0.3, 1, 0.3] }}
+                                    transition={{ duration: 1.5, repeat: Infinity, delay: i * 0.2 }}
+                                    className="w-1.5 h-1.5 rounded-full bg-blue-500"
+                                />
+                            ))}
                         </div>
                     </motion.div>
                 </motion.div>
