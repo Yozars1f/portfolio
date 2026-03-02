@@ -42,15 +42,50 @@ export default function Preloader() {
                         transition={{ duration: 0.5 }}
                         className="mt-8 text-center"
                     >
-                        <motion.h2
-                            className="text-2xl font-serif font-bold text-slate-800 dark:text-slate-200 mb-2"
-                            animate={{ opacity: [0.5, 1, 0.5] }}
-                            transition={{ duration: 2, repeat: Infinity }}
+                        <motion.div
+                            initial={{ scale: 0.8, opacity: 0 }}
+                            animate={{ scale: [1, 1.1, 1], opacity: 1 }}
+                            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                            className="flex justify-center text-blue-600 mb-6"
                         >
-                            Welcome
+                            <div className="relative">
+                                <div className="absolute inset-0 bg-blue-400/20 rounded-full blur-xl animate-pulse" />
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="64"
+                                    height="64"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    strokeWidth="1.5"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    className="relative z-10"
+                                >
+                                    <path d="M4.8 2.8C3.5 1.5 1.4 1.5 0.1 2.8c-1.3 1.3-1.3 3.4 0 4.7l.1.1 4.7 4.7c1.3 1.3 3.4 1.3 4.7 0 1.3-1.3 1.3-3.4 0-4.7l-4.8-4.8z" />
+                                    <path d="M12 11V7a5 5 0 0 0-5-5" />
+                                    <path d="M22 13a4 4 0 0 1-4-4V7" />
+                                    <path d="M18 10a2 2 0 1 0 0-4 2 2 0 0 0 0 4z" />
+                                    <path d="M7 21h10" />
+                                    <path d="M12 21v-4a5 5 0 0 0-5-5H5" />
+                                    <path d="M12 17a4 4 0 0 1-4 4" />
+                                    <path d="M12 17a4 4 0 0 0 4 4" />
+                                </svg>
+                            </div>
+                        </motion.div>
+
+                        <motion.h2
+                            className="text-3xl font-serif font-bold text-slate-800 dark:text-slate-200 tracking-widest uppercase mb-2"
+                        >
+                            Youssef Ahmed, MD
                         </motion.h2>
-                        <div className="flex justify-center text-blue-600">
-                            <Loader2 className="animate-spin" size={24} />
+
+                        <p className="text-blue-600 dark:text-blue-400 font-medium tracking-[0.3em] text-xs mb-8">
+                            CLINICAL AI & RESEARCH
+                        </p>
+
+                        <div className="flex justify-center text-slate-400">
+                            <Loader2 className="animate-spin" size={20} />
                         </div>
                     </motion.div>
                 </motion.div>

@@ -19,10 +19,7 @@ export default function Footer() {
             <div className="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center bg-transparent">
                 <div className="mb-4 md:mb-0 text-center md:text-left">
                     <p className="text-sm text-slate-500 dark:text-slate-400">
-                        &copy; {new Date().getFullYear()} {personalInfo.name}. All rights reserved.
-                    </p>
-                    <p className="text-xs text-slate-400 dark:text-slate-500 mt-1">
-                        {personalInfo.headline}
+                        &copy; {new Date().getFullYear()} {personalInfo.name}, MD. All rights reserved.
                     </p>
                 </div>
 
